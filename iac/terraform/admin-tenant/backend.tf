@@ -1,6 +1,6 @@
 terraform {
   backend "s3" {
-    region               = "us-west-2" # TODO: need to set this to customer's default region
+    region               = "us-east-1" # TODO: need to set this to customer's default region
     key                  = "tenant"
     workspace_key_prefix = "admin:"
     encrypt              = true
