@@ -100,9 +100,9 @@ The first deployment step is to create the DuploCloud Tenant. To start this pipe
 
 In the form for Module select admin-tenant, for Command select apply, and for Environment select prod then click Run workflow.
 
-Once this pipeline has completed log into Duplo and review the list of Tenants.  You will see a new Tenant with the name "$DUPLO_TENANT_BASE-$ENVIRONMENT".  So assuming you selected "app01" for DUPLO_TENANT_BASE and "dev" for Environment your tenant name would be "app01-prod".  
+Once this pipeline has completed log into Duplo and review the list of Tenants.  You will see a new Tenant with the name "$ENVIRONMENT-$DUPLO_TENANT_BASE".  So assuming you selected "app01" for DUPLO_TENANT_BASE and "dev" for Environment your tenant name would be "prod-app01".  
 
-You can repeat this step and select dev for Environment or move on to the next step. 
+You can repeat this step and select dev for Environment or move on to the next step.
 
 ![](./assets/run-infra-pipeline.png)
 
@@ -164,7 +164,7 @@ You can check the environmetn variable configuration in DuploCloud at DevOps -> 
 To customize the infrastructure between the different environments (dev, qa, staging, production) you can create Terraform variables file under the following path:
 
 ```text
-iac/terraform/$TERRAFORM_PROJECT/config/$DUPLO_TENANT_BASE-$ENVIRONMENT/$TERRAFORM_PROJECT.tfvars
+iac/terraform/$TERRAFORM_PROJECT/config/$ENVIRONMENT-$DUPLO_TENANT_BASE/$TERRAFORM_PROJECT.tfvars
 ```
 
 TERRAFORM_PROJECT - one of admin-tenant, aws-services, app
