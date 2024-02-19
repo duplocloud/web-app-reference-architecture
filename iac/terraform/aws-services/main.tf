@@ -9,7 +9,6 @@ data "duplocloud_tenant" "tenant" {
   name = local.tenant_name
 }
 
-
 data "duplocloud_tenant_aws_region" "current" {
   tenant_id = local.tenant_id
 }
@@ -40,5 +39,3 @@ data "terraform_remote_state" "tenant" {
     region               = "us-west-2"
   }
 }
-
-

@@ -17,7 +17,6 @@ variable "az_list" {
   description = "Which AWS AZs to use in the k8s worker node ASG"
 }
 
-
 variable "s3_allow_public_access" {
   default = false
   description = "Wether or not to enable S3 public access"
