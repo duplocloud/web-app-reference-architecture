@@ -14,8 +14,8 @@ on:
 env:
   DUPLO_HOST: ${{ vars.DUPLO_HOST }}
   DUPLO_TOKEN: ${{ secrets.DUPLO_TOKEN }}
+  # TOOD: need to support customer ECR repo name
   ECR_REGISTRY: "813590939111.dkr.ecr.us-west-2.amazonaws.com"
-
 
 jobs:
   build_image:
@@ -40,15 +40,16 @@ jobs:
         platforms: linux/amd64
         push: true
         registry: ${{ env.ECR_REGISTRY }}
-        repo: "${{ vars.DUPLO_TENANT_BASE }}-prod-frontend"
+        repo: "prod-${{ vars.DUPLO_TENANT_BASE }}-frontend"
         build-args: >
           name=${{ github.repository }}
-
+    
+    # TODO: 
     # https://github.com/docker/buildx/issues/1513
-    # I couldnt seem to get the docker image build to work in a way that is compatible with Lambda
+    # I couldnt seem to get the docker image build using duplocloud/actions/build-image to work in a way that is compatible with Lambda
     - name: Build Lambda Function
       run: |
         cd lambda
         docker build -t lambda .
-        docker tag lambda ${{ env.ECR_REGISTRY }}/${{ vars.DUPLO_TENANT_BASE }}-prod-serverless:main
-        docker push ${{ env.ECR_REGISTRY }}/${{ vars.DUPLO_TENANT_BASE }}-prod-serverless:main
+        docker tag lambda ${{ env.ECR_REGISTRY }}/prod-${{ vars.DUPLO_TENANT_BASE }}-serverless:main
+        docker push ${{ env.ECR_REGISTRY }}/prod-${{ vars.DUPLO_TENANT_BASE }}-serverless:main

@@ -17,7 +17,7 @@
     - [Deployment Steps](#deployment-steps)
       - [Infrastructure Pipelines - admin-tenant](#infrastructure-pipelines---admin-tenant)
       - [Infrastructure Pipelines - aws-services](#infrastructure-pipelines---aws-services)
-      - [Build and Publish Iamges](#build-and-publish-iamges)
+      - [Build and Publish Images](#build-and-publish-images)
       - [Infrastructure Pipelines - app](#infrastructure-pipelines---app)
       - [Environment Validation](#environment-validation)
         - [Web Application](#web-application)
@@ -88,9 +88,9 @@ Create the following secrets and environment variables:
 
 | Type                | Key               | Value |
 | ------------------- | ----------------- | ----- |
-| Secret              | DUPLO_HOST        | Get [long lived token](https://docs.duplocloud.com/docs/user-administration/access-control/api-tokens#creating-a-permanent-api-token) from DuploCloud      |
+| Secret              | DUPLO_TOKEN        | Get [long lived token](https://docs.duplocloud.com/docs/user-administration/access-control/api-tokens#creating-a-permanent-api-token) from DuploCloud      |
 | Environment Variale | DUPLO_HOST        | DuploCloud Platform host.  Example: https://salesdemo.duplocloud.net/ |
-| Environment Variale | DUPLO_TENANT_BASE |  Name for your application in DuploCloud.  For testing use "app01"     |
+| Environment Variale | DUPLO_TENANT_BASE |  Name for your application in DuploCloud.  For testing use "app01".  This will produce DuploCloud Tenants in the form of app01-dev, app01-prod, etc     |
 
 ### Deployment Steps
 
@@ -110,7 +110,7 @@ You can repeat this step and select dev for Environment or move on to the next s
 
 Under the Infrastructure Piplines click Run workflow and in the form for Module select aws-services, for Command select apply, and for Environment select prod then click Run workflow.
 
-#### Build and Publish Iamges
+#### Build and Publish Images
 
 Now that the aws-services modules under Infrastructure Pipelines is complete we can build and publish our docker images.  This step must come after aws-services because aws-services includes the required ECR Repository.
 
