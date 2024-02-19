@@ -29,6 +29,7 @@ locals {
   secret_name_suffix = "database"
   base_domain        = data.duplocloud_plan_settings.plan.dns_setting[0].external_dns_suffix
   default_frontend_docker_image = "${data.aws_caller_identity.current.account_id}.dkr.ecr.${local.region}.amazonaws.com/${terraform.workspace}-frontend:main"
+  default_lambda_docker_image = "${data.aws_caller_identity.current.account_id}.dkr.ecr.${local.region}.amazonaws.com/${terraform.workspace}-serverless:main"
 }
 
 data "terraform_remote_state" "tenant" {
