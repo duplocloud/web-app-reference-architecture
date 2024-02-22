@@ -62,9 +62,8 @@ jobs:
         build-args: >
           name=${{ github.repository }}
     
-    # TODO: 
-    # https://github.com/docker/buildx/issues/1513
     # I couldnt seem to get the docker image build using duplocloud/actions/build-image to work in a way that is compatible with Lambda
+    # https://github.com/docker/buildx/issues/1513
     - name: Build and Push Lambda Function Docker Image
       shell: bash
       run: |

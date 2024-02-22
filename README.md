@@ -69,7 +69,8 @@ Each Terraform module can be found under the `iac/terraform` directory and a REA
 2) you have admin access to a DuploCloud environment to generate a long lived admin [DuploCloud Token](https://docs.duplocloud.com/docs/user-administration/access-control/api-tokens#creating-a-permanent-api-token)
 3) you have a Duplocloud Infrastructure named "prod-infra" or you create a TF variables override file that updates the value of `infra_name`.  More on TF variable overrie files further down.
 4) AWS ACM certificate added to the DuploCloud Plan that is assicated with the `infra_name`
-5) [Secrets CSI Driver has been enabled on the DuploCloud Infrastructure](https://docs.duplocloud.com/docs/kubernetes-user-guide/kubernetes-configs-and-secrets/adding-secretproviderclass-custom-resource#step1-enable-secret-provider-class)
+5) DuploCloud Platform `default` infrastructure is located in `us-west-2` which means the Terraform state bucket is also in `us-west-2`.  If this is now true, there are three `backend.tf` files under `iac/terraform/` that will need to be updated to the correct region.
+6) [Secrets CSI Driver has been enabled on the DuploCloud Infrastructure](https://docs.duplocloud.com/docs/kubernetes-user-guide/kubernetes-configs-and-secrets/adding-secretproviderclass-custom-resource#step1-enable-secret-provider-class)
 
 ### Create Repo
 
