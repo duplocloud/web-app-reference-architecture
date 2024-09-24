@@ -64,7 +64,7 @@ jobs:
       uses: actions/checkout@v3
 
     - name: Duplo Setup
-      uses: duplocloud/actions/setup@main
+      uses: duplocloud/actions/setup@6a8203e6f966036c242b950f7148d6d576ff8aa5
     
     - name: Terraform Setup
       uses: duplocloud/actions/setup-terraform@main
